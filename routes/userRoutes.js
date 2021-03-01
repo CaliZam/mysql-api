@@ -1,82 +1,13 @@
 const express = require('express');
 const router = express.Router()
-const { getById, getAll, createUser, updateUser, deleteUser, deleteAll } = require('../logic/user')
+const userController = require('../controllers/userControllers')
 
+router.get("/getById/:id?", userController.getUser)
+router.get("/all", userController.getAllUser)
+router.post("/create", userController.createUser)
+router.put("/update/:id?", userController.updateUser)
+router.delete("/delete/:id?", userController.deleteUser)
+router.delete("/deleteAll", userController.deleteAllUsers)
 
-
-
-router.get("/getById/:id?", (req, res) => {
-    const { id } = req.params
-    try {
-        getById(id)
-            .then(result => res.send(result))
-            .catch((error) => res.status(404).send({ "error": error.message }))
-    } catch (error) {
-        res.status(400).send({ "error": error.message })
-    }
-}
-)
-
-
-router.get("/all", (req, res) => {
-    try {
-        getAll()
-            .then(result => res.send(result))
-            .catch((error) => res.status(404).send({ "error": error.message }))
-    } catch (error) {
-        res.status(400).send({ "error": error.message })
-    }
-}
-)
-router.post("/create", (req, res) => {
-    const { name, email } = req.body
-    try {
-        createUser(name, email)
-            .then(result => res.send(result))
-            .catch((error) => res.status(404).send({ "error": error.message }))
-    } catch (error) {
-        res.status(400).send({ "error": error.message })
-    }
-}
-)
-
-
-router.put("/update/:id?", (req, res) => {
-    const { id } = req.params
-    const { name, email } = req.body
-    try {
-        updateUser(id, name, email)
-            .then(result => res.send(result))
-            .catch((error) => res.status(404).send({ "error": error.message }))
-    } catch (error) {
-        res.status(400).send({ "error": error.message })
-    }
-}
-)
-
-
-router.delete("/delete/:id?", (req, res) => {
-    const { id } = req.params
-    try {
-        deleteUser(id)
-            .then(result => res.send(result))
-            .catch((error) => res.status(404).send({ "error": error.message }))
-    } catch (error) {
-        res.status(400).send({ "error": error.message })
-    }
-}
-)
-
-
-router.delete("/deleteAll", (req, res) => {
-    try {
-        deleteAll()
-            .then(result => res.send(result))
-            .catch((error) => res.status(404).send({ "error": error.message }))
-    } catch (error) {
-        res.status(400).send({ "error": error.message })
-    }
-}
-)
 
 module.exports = router

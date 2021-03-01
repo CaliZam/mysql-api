@@ -1,13 +1,14 @@
 {
   "name": "api-mysql",
   "version": "1.0.0",
-  "description": "",
+  "description": "a simple rest-api with mysql",
+  "homepage": "https://luislourencos.github.io/code-with-sergio/",
   "main": "index.js",
   "scripts": {
     "start": "nodemon .",
     "test": "npx mocha ./**/**/*.spec.js"
   },
-  "author": "",
+  "author": "sergio luis <luis.lourencos@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
