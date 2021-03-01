@@ -16,7 +16,6 @@ module.exports = {
         } else {
             throw Error('any propriety found')
         }
-
         return await queryConnection(`SELECT * FROM users WHERE ${typeSearch} ='${iduser || name || email}'`)
     },
     create: async ({ iduser, name, email }) => {

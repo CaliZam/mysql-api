@@ -20,9 +20,6 @@ connection.connect((error) => {
 
         app.use('/user', userRoutes)
 
-        //Swager documentation
-        // const swaggerSpec = swaggerJSDoc(swaggerOptions);
-        // app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
         const options = {
             definition: {
@@ -30,7 +27,7 @@ connection.connect((error) => {
                 info: {
                     title: "Yoga proyect",
                     version: "1.0.0",
-                    description: "A simple yoga Rest API",
+                    description: "A simple Rest API with mysql",
                 },
                 servers: [
                     {
